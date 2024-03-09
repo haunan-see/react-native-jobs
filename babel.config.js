@@ -1,7 +1,8 @@
 module.exports = function (api) {
-  api.cache(true);
+  api.cache(true)
   return {
     presets: ["babel-preset-expo"],
-    plugins: ["expo-router/babel"],
-  };
-};
+    // node_modules/expo-router/entry.js: [BABEL]: expo-router/babel is deprecated in favor of babel-preset-expo in SDK 50
+    plugins: [],
+  }
+}
