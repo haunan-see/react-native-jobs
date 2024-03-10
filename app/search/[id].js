@@ -13,6 +13,7 @@ import axios from "axios"
 import { ScreenHeaderBtn, NearbyJobCard } from "../../components"
 import { COLORS, icons, SIZES } from "../../constants"
 import styles from "../../styles/search"
+import useFetch from "../../hook/useFetch"
 
 const JobSearch = () => {
   const params = useLocalSearchParams()
@@ -28,22 +29,12 @@ const JobSearch = () => {
     setSearchResult([])
 
     try {
-      const options = {
-        method: "GET",
-        url: `https://jsearch.p.rapidapi.com/search`,
-        headers: {
-          "X-RapidAPI-Key":
-            "1f51f1e37bmshc5468a5fe0ba09fp113b07jsne2630acfa62d",
-          "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-        },
-        params: {
-          query: params.id,
-          page: page.toString(),
-        },
-      }
+      const { data } = useFetch("search", {
+        query: params.id,
+        num_pages: page.toString(),
+      })
 
-      const response = await axios.request(options)
-      setSearchResult(response.data.data)
+      setSearchResult(data?.data)
     } catch (error) {
       setSearchError(error)
       console.log(error)

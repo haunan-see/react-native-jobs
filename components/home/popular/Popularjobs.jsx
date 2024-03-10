@@ -11,22 +11,16 @@ import styles from "./popularjobs.style"
 import { COLORS, SIZES } from "../../../constants"
 import PopularJobCard from "../../common/cards/popular/PopularJobCard"
 import useFetch from "../../../hook/useFetch"
+import usePopularJob from "./Popularjobs.hook"
 
 const Popularjobs = () => {
-  const router = useRouter()
-  const [selectedJob, setSelectedJob] = useState(null)
-
+  // leave this here because we dont use hook within a hook
   const { data, isLoading, error } = useFetch("search", {
     query: "Developer",
     num_pages: 1,
   })
 
-  console.log(data[0].job_id)
-
-  const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`)
-    setSelectedJob(item.job_id)
-  }
+  const { selectedJob, handleCardPress } = usePopularJob()
 
   return (
     <View style={styles.container}>
