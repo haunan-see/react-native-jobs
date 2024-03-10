@@ -8,9 +8,11 @@ import {
   ScreenHeaderBtn,
   Welcome,
 } from "../components"
+import useRandomUser from "../hook/useRandomUser"
 
 const Home = () => {
   const router = useRouter()
+  const { userFullName, avatar, isLoading, error } = useRandomUser()
   const [searchTerm, setSearchTerm] = useState("")
 
   return (
@@ -29,7 +31,7 @@ const Home = () => {
           ),
           headerRight: () => (
             <ScreenHeaderBtn
-              iconUrl={images.profile}
+              iconUrl={{ uri: avatar }}
               dimension="100%"
               onPress={() => router.navigate("Profile")}
             />
@@ -39,6 +41,7 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: SIZES.medium }}>
           <Welcome
+            userFullName={userFullName}
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             handleClick={() => {

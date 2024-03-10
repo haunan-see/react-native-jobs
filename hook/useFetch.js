@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { API_KEY } from "@env"
+import Config from "react-native-config"
 
-const apiKey = API_KEY
+const apiKey = Config.API_KEY
 
 const useFetch = (endpoint, query) => {
   const [data, setData] = useState([])

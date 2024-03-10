@@ -67,3 +67,95 @@ export type Job = {
   job_onet_soc: string
   job_onet_job_zone: string
 }
+
+// Random User Type
+type Coordinates = {
+  latitude: string
+  longitude: string
+}
+
+type Timezone = {
+  offset: string
+  description: string
+}
+
+type Street = {
+  number: number
+  name: string
+}
+
+type Location = {
+  street: Street
+  city: string
+  state: string
+  country: string
+  postcode: number
+  coordinates: Coordinates
+  timezone: Timezone
+}
+
+type Name = {
+  title: string
+  first: string
+  last: string
+}
+
+type Login = {
+  uuid: string
+  username: string
+  password: string
+  salt: string
+  md5: string
+  sha1: string
+  sha256: string
+}
+
+type Dob = {
+  date: string
+  age: number
+}
+
+type Registered = {
+  date: string
+  age: number
+}
+
+type Id = {
+  name: string
+  value: string
+}
+
+type Picture = {
+  large: string
+  medium: string
+  thumbnail: string
+}
+
+export type Result = {
+  gender: string
+  name: Name
+  location: Location
+  email: string
+  login: Login
+  dob: Dob
+  registered: Registered
+  phone: string
+  cell: string
+  id: Id
+  picture: Picture
+  nat: string
+}
+
+type Info = {
+  seed: string
+  results: number
+  page: number
+  version: string
+}
+
+export type RandomUserData = {
+  data: {
+    results: Result[]
+    info: Info
+  }
+}

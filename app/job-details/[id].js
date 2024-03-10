@@ -23,8 +23,6 @@ const JobDetails = () => {
   const params = useLocalSearchParams()
   const router = useRouter()
 
-  console.log("params", params)
-
   const { data, isLoading, error, refetch } = useFetch("job-details", {
     job_id: params.id,
   })

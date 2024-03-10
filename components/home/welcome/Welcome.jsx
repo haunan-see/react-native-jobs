@@ -13,14 +13,14 @@ import styles from "./welcome.style"
 
 const jobTypes = ["Full Time", "Part Time", "Contract", "Freelance"]
 
-const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
+const Welcome = ({ userFullName, searchTerm, setSearchTerm, handleClick }) => {
   const router = useRouter()
   const [activeJobType, setActiveJobType] = useState(jobTypes[0])
 
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello Hau Nan,</Text>
+        <Text style={styles.userName}>Hello {userFullName},</Text>
         <Text style={styles.welcomeMessage}>Welcome to Job App</Text>
       </View>
 

@@ -5,7 +5,6 @@ import { icons, images } from "../../../constants"
 import styles from "./company.style"
 
 const Company = ({ companyLogo, companyName, jobTitle, location }) => {
-  console.log(companyLogo, companyName)
   return (
     <View style={styles.container}>
       <View style={styles.logoBox}>
